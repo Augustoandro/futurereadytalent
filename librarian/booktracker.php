@@ -31,7 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div>
             <center>
                 <form action='issuebook.php' method='post'>
-                    <label for="edu">Qualification:</label>
+                    <label for="edu">Issue Book to/Return Book from:</label>
                     <select name='issuername' id='issuername'>
                         <?php
                         $sql2 = "SELECT username FROM users";
@@ -66,12 +66,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             echo "<td>".$resul['issued']."</td>";
                             echo "<td>".$resul['quantity']."</td>";
                             echo "<td><input name='bookname' type='hidden' value='".$resul['name']."'>";
-                            echo "<input type='submit' value='Issue'></td>";
+                            echo "<input type='submit' value='Issue' name='issue_but'></td>";
                             echo "</tr>";
                         }
                         ?>
                 </table>
-                    </form>
+                    
                 <?php
                     if(isset($_SESSION['message'])){
                         $rs = $_SESSION['message'];
@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </center>
         </div>
         <div>
-            <center>
+            <center><br><br><br>
         <table border="">
             <tr>
                 <td>Book Name</td>
@@ -99,11 +99,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 echo "<td>".$resul['issuer']."</td>";
                 echo "<td>".$resul['issue_date']."</td>";
                 echo "<td>".$resul['ret_date']."</td>";
-                echo "<td><button>Return</button><button>Reissue</button></td>";
+                echo "<td><input name='bookopname' type='hidden' value='".$resul['book']."'><input name='useropname' type='hidden' value='".$resul['issuer']."'><input type='Submit' value='Return' name='ret_but'><input type='Submit' value='Reissue' name='reissue_but'></td>";
                 echo "</tr>";
             }
             ?>
         </table>
+                </form>
                 </center>
         </div>
         </div>
